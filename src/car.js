@@ -2,8 +2,9 @@ function Car(make, model, color){
   this.make = make;
   this.model = model;
   this.color = color;
+  this.year = new Date().getFullYear();
   this.state = "off";
-  this.previous_owner = [];
+  this.previous_owners = [];
   this.current_owner = "manufacturer";
   this.passengers = [];
 }
@@ -47,18 +48,13 @@ Car.prototype.pickUp = function(name){
 };
 
 Car.prototype.dropOff = function(name){
-  if(this.state === "off" && this.passengers.indexOf(name) !== -1 ){
+  if(this.state === "on" && this.passengers.indexOf(name) !== -1 ){
     this.passengers.splice(this.passengers.indexOf(name),1);
   }
 };
 
 module.exports=Car;
 
-// Implement the following methods:
-
-// Car#dropOff it should take a name and remove them from the passengers array,
-// but only if they are in the array.
-//It should also only drop them off if the car is on.
 
 
 
